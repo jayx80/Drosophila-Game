@@ -147,6 +147,71 @@ const LEVELS = [
 
     successVideo: "assets/videos/escape_success.mp4",
     failureVideo: "assets/videos/escape_failure.mp4"
+},
+{
+id: "courtship",
+    behaviorName: "Courtship",
+    prompt: "Love at first... mite? Which neurons need to be activated for courtship? [unfinished]",
+    introVideo: "assets/videos/courtship_intro.mp4",
+    musicTrack: "assets/audio/courtship_music.mp3",
+    successMusic: "assets/audio/courtship_success_music.mp3",
+    failureMusic: "assets/audio/courtship_failure_music.mp3",
+
+    neurons: [
+      {
+        id: "lplc4",
+        name: "Lobula Plate-lobula Columnar Neuron (LPLC4)",
+        shortLabel: "LPLC4",
+        function: "Detects fast-looming visual stimuli, like an approaching predator, and signals imminent collision.",
+        connections: "Receives input from the visual system (lobula); outputs to the Giant Fiber neuron.",
+        demoVideo: "assets/videos/lplc4_demo.mp4",
+        diagramPosition: { x: 75, y: 115, labelDy: -20 }
+      },
+      {
+        id: "pip10",
+        name: "pIP10 Neuron",
+        shortLabel: "pIP10",
+        function: "Initiates motor program for courtship song.",
+        connections: "Receives input from courtship circuitry (P1); outputs to thoracic motor circuitry.",
+        demoVideo: "assets/videos/pip10_demo.mp4",
+        diagramPosition: { x: 200, y: 175, labelDy: -16 }
+      },
+      {
+        id: "hg1",
+        name: "hg1 Motoneuron",
+        shortLabel: "hg1",
+        function: "Directly triggers wing movement for generating song.",
+        connections: "Downstream of the pIP10 neuron; connects directly to the hg1 wing muscle.",
+        demoVideo: "assets/videos/hg1_demo.mp4",
+        diagramPosition: { x: 200, y: 385, labelDy: -18 }
+      },
+      {
+        id: "p1",
+        name: "P1 Neuron",
+        shortLabel: "P1",
+        function: "Drives male courtship behavior in response to female cues.",
+        connections: "Receives input on female-related olfactory and gustatory cues; connects to song-production and approach circuits.",
+        demoVideo: "assets/videos/p1_demo.mp4",
+        diagramPosition: { x: 250, y: 90, labelDy: -16 }
+      },
+      {
+        id: "grooming_command",
+        name: "Grooming Command Neuron",
+        shortLabel: "Groom",
+        function: "Triggers leg-sweeping grooming movements in response to irritants on the body — not involved in escape.",
+        connections: "Receives mechanosensory input from bristles; outputs to leg motor circuits for grooming.",
+        demoVideo: "assets/videos/grooming_demo.mp4",
+        diagramPosition: { x: 158, y: 415, labelDx: -38, labelDy: 4 }
+      }
+    ],
+
+    // The escape jump requires the full detection-to-motor chain:
+    // lplc4 detects the threat, the Giant Fiber relays it, and the
+    // TTM motor neuron fires the jump muscle. All three are needed.
+    correctNeuronIds: ["p1", "pip10", "hg1"],
+
+    successVideo: "assets/videos/courtship_success.mp4",
+    failureVideo: "assets/videos/courtship_failure.mp4"
   }
 
   // ---------------------------------------------------------
